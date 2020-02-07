@@ -1,14 +1,15 @@
-import React from 'react';
-import FilterLink from '../containers/FilterLink';
+import React, { Component } from 'react'
 
-const Footer = () => (
-	<p>
-		Show: <FilterLink filter="SHOW_ALL">ALL</FilterLink>
-		{','}
-		<FilterLink filter="SHOW_ACTIVE">Active</FilterLink>
-		{','}
-		<FilterLink filter="SHOW_COMPLETED">Completed</FilterLink>
-	</p>
-)
-
-export default Footer\
+export default class Footer extends Component {
+  render() {
+    const { filter, setFilter: setVisibilityFilter } = this.props;
+    return (
+      <div>
+        <span>Show:</span>
+        <button disabled={filter === "all"} onClick={() => setVisibilityFilter("all")}>All</button>
+        <button disabled={filter === "active"} onClick={() => setVisibilityFilter("active")}>Active</button>
+        <button disabled={filter === "completed"} onClick={() => setVisibilityFilter("completed")}>Completed</button>
+      </div>
+    )
+  }
+}
