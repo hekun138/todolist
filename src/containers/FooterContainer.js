@@ -1,16 +1,14 @@
 import { connect } from "react-redux";
 import Footer from "../components/Footer";
 import { setFilter } from "../actions";
+import { getFilter } from "../selectors/index";
 
 const mapStateToProps = state => ({
-  filter: state.filter
-})
+  filter: getFilter(state)
+});
 
 const mapDispatchToProps = dispatch => ({
   setFilter: filter => dispatch(setFilter(filter))
-})
+});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Footer);
+export default connect(mapStateToProps, mapDispatchToProps)(Footer);
